@@ -1,0 +1,2 @@
+[console_scripts]
+eval-data-gen = eval_data_gen.cli.main:app

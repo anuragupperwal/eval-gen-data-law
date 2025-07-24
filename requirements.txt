@@ -1,0 +1,9 @@
+datasets
+faiss-cpu==1.8.0
+typer
+sentence-transformers==2.6.1
+google-generativeai
+nltk
+dotenv
+pymongo
+einops
