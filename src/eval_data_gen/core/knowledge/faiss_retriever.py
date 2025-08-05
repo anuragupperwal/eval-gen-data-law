@@ -1,5 +1,5 @@
 import faiss, numpy as np, gzip, json
-from sentence_transformers import SentenceTransformer
+from langchain_ollama.embeddings import OllamaEmbeddings
 from pathlib import Path
 from typing import List, Dict
 
@@ -8,11 +8,11 @@ class FaissRetriever:
         self,
         index_path: str = "tmp/faiss.index",
         meta_path: str  = "tmp/meta.jsonl.gz",
-        emb_model: str  = "sentence-transformers/all-MiniLM-L6-v2", #"snowflake/snowflake-arctic-embed-l",
+        OLLAMA_EMB_MODEL = "nomic-embed-text"
         
     ):
+        self.embedder = OllamaEmbeddings(model=OLLAMA_EMB_MODEL)
         self.index = faiss.read_index(index_path)
-        self.encoder = SentenceTransformer(emb_model)
         self.meta   = self._load_meta(meta_path)
 
     @staticmethod
@@ -24,8 +24,9 @@ class FaissRetriever:
         return meta
 
     def query(self, text: str, k: int = 3):
-        q_emb = self.encoder.encode(text, normalize_embeddings=True, convert_to_numpy=True)
-        distance, indices = self.index.search(q_emb[None, :].astype("float32"), k)
+        q_emb = self.embedder.embed_query(text)
+        q_emb = np.array([q_emb], dtype="float32")
+        distance, indices = self.index.search(q_emb, k)
         results = []
         for score, idx in zip(distance[0], indices[0]):
             if idx == -1:
@@ -34,6 +35,7 @@ class FaissRetriever:
             meta_row["score"] = float(score)
             results.append(meta_row)   # contains chunk_id, doc_id, text, score
         return results
+
 
 
 # pip install -e .

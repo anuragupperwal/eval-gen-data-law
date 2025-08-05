@@ -12,7 +12,7 @@ class GeminiProvider:
     """
 
     def __init__(self, model_name: str = "models/gemini-2.5-flash"):
-        api_key = os.getenv("GOOGLE_API_KEY")
+        api_key = os.getenv("GOOGLE_API_KEY_3")
         if not api_key:
             raise RuntimeError("Set GOOGLE_API_KEY env var first.")
         configure(api_key=api_key)

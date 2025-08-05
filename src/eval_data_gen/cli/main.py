@@ -74,13 +74,22 @@ def pipeline_run(taxonomy_dir: str = "sample_data/taxonomies", bundle_dir: str =
     typer.echo(f"\nStep 4: Generating MCQs for all bundles in {bundle_dir}")
     gen = RAGGenerator()
     bundle_paths = sorted(Path(bundle_dir).glob("*.json"))
+    
+    questions_out_dir = Path("tmp/questions") # Define your output directory
+
     for bp in bundle_paths:
+        # Construct the expected output filename from the bundle filename
+        output_filename = questions_out_dir / bp.name
+        # Check if the output file already exists
+        if output_filename.exists():
+            print(f"--> Skipping {bp.stem}, questions already exist.")
+            continue # Move to the next bundle
+            
         gen.generate_for_bundle(bp, n=n)
 
     typer.echo("\nPipeline completed. Questions saved under tmp/questions/")
 
 def main():
-    # --- FIX FOR SEGMENTATION FAULT (MUST BE HERE) ---
     # This sets the multiprocessing start method to 'spawn', which is safer on macOS.
     # It must be called before any other multiprocessing-related code runs.
     try:
@@ -96,5 +105,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# if __name__ == "__main__":
-#     app()
+

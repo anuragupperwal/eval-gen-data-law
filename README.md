@@ -1,6 +1,41 @@
-base_generator.py
-│       │   │   ├── llm_generator.py
-│       │   │   └── rag_generator.py
+#to seed taxonomies to MondoDB 
+python -m eval_data_gen.cli.main load-taxonomies-to-db
+
+#to seed prompts to MondoDB 
+python -m eval_data_gen.cli.main load-prompts-to-db
+
+#Run from root dir
+python -m eval_data_gen.cli.main pipeline-run --n 5 --k 10 --prompt-id mcq_conceptual --options 8
+
+#run evaluation and debugging
+DEBUG_DUMP=1 PYTHONPATH=src python -m eval_data_gen.core.evaluation.test_mcq
+
+#Run the entire pipeline
+python main.py pipeline-run --taxonomy-dir sample_data --bundle-dir tmp/bundles --n 3 --k 4
+
+#check retrieval
+eval-data-gen retrieve-faiSS 
+eval-data-gen retrieve-big --k 4 --window 2
+
+
+#to generate randomized questions in csv to form the evaluation form
+python -m eval_data_gen.core.utilities.generate_ques_csv
+
+
+# Build or confirm FAISS index
+python -m eval_data_gen.core.knowledge.index_builder
+
+# Generate retrieval bundles for every new leaf
+eval-data-gen build-bundles \
+    --taxonomy-path sample_data/taxonomy_law.yaml \
+    --out-dir tmp/bundles_en \
+    --k 20 \
+    --window 0
+
+# Produce MCQs with Gemini-Flash
+eval-data-gen generate-questions \
+    --bundle-dir tmp/bundles_en \
+    --n 5       
 
 
 Install editable
@@ -9,3 +44,4 @@ Install editable
 faiss-cpu==1.7.4.post2 - fails on mac so,
     brew install swig cmake     
     pip install --no-binary :all: faiss-cpu  #compiles C++
+    
