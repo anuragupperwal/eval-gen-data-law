@@ -21,3 +21,4 @@ llama-index-vector-stores-faiss
 llama-index-embeddings-langchain
 ollama
 aiohttp
+"dask[complete]" #"" to avoid shell from misunderstanding []

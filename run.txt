@@ -10,7 +10,7 @@ python -m eval_data_gen.cli.main pipeline-run --n 5 --k 10 --prompt-id mcq_conce
 #run evaluation and debugging
 DEBUG_DUMP=1 PYTHONPATH=src python -m eval_data_gen.core.evaluation.test_mcq
 
-#Run the entire pipeline
+#Run the entire pipeline - for with local taxonomies
 python main.py pipeline-run --taxonomy-dir sample_data --bundle-dir tmp/bundles --n 3 --k 4
 
 #check retrieval

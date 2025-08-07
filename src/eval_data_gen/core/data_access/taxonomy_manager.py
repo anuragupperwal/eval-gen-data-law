@@ -20,8 +20,8 @@ class TaxonomyManager:
         
         # Establish connection to MongoDB
         self.client = MongoClient(mongo_uri)
-        self.db = self.client.get_database("taxonomy_db") # You can name your DB
-        self.collection = self.db.get_collection("taxonomies") # You can name your collection
+        self.db = self.client.get_database("taxonomy_db")
+        self.collection = self.db.get_collection("taxonomies")
 
     def _flatten_and_prepare(self, domain: str, cat_name: str, item: dict) -> dict:
         """
