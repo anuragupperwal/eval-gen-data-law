@@ -1,0 +1,8 @@
+{
+  "prompt_id": "mcq_scenario",
+  "prompt_type": "mcq",
+  "description": "Generates an application-based MCQ. It first creates a short, hypothetical legal scenario and then asks a question that requires applying principles from the provided text to that scenario.",
+  "template": "You are a law professor creating an exam. Your goal is to write {n} multiple-choice questions with {options} options each about *{leaf_label}*.\n\nGoal: For each question, create a short hypothetical scenario (1-3 sentences) and then ask a question that requires *applying* the legal principles from the passages to that scenario.\n\nInstructions:\n- Each question must be fully answerable without seeing the passages.\n- Do NOT use phrases like \"According to the passage\" \"Based on the excerpt\", \"As stated above\", etc\".\n- The scenario should be a new, invented situation not directly described in the context, but solvable using the context's principles. Clearly mention what the section/case/statute is along with necessary years.\n- Distractors should represent common misapplications of the legal rules.\n- Add two standard options to every question: one for 'None of the above' and one for 'Question not clear'.\n\nPassages (context you MUST rely on, but MUST NOT reference explicitly):\n---------\n{context}\n---------\n\nSTRICT OUTPUT FORMAT:\nQ1. <scenario text>. <question text based on scenario>\n(1) option A\n(2) option B\n...\n({options}-1) None of the above\n({options}) Question not clear\nAnswer: X",
+  "parser_regex": "Q\\d+\\..+?Answer:\\s*[1-12]",
+  "version": 1.0
+}

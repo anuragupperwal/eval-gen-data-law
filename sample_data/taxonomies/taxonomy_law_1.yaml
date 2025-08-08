@@ -1,0 +1,25 @@
+domain: Law
+categories:
+  Environmental Law:
+    - topic: Public Trust Doctrine – Landmark Cases
+      difficulty: H
+    - topic: Environmental Impact Assessment (EIA) Notifications
+      difficulty: H
+    - topic: Role of National Green Tribunal (NGT)
+      difficulty: H
+
+  Taxation Law:
+    - topic: Principles of GST – Input Tax Credit
+      difficulty: H
+    - topic: Constitutional Validity of Tax Laws – Judicial Review Cases
+      difficulty: H
+    - topic: Income Tax – Residential Status & Tax Liability
+      difficulty: H
+
+  Consumer Protection:
+    - topic: Consumer Protection Act, 2019 – Key Definitions
+      difficulty: H
+    - topic: Misleading Advertisements and Unfair Trade Practices
+      difficulty: H
+    - topic: Jurisdiction of Consumer Forums
+      difficulty: H

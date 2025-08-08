@@ -1,0 +1,8 @@
+{
+  "prompt_id": "mcq_factual",
+  "prompt_type": "mcq",
+  "description": "Generates straightforward, factual MCQs that test knowledge of specific terms, case names, section numbers, or key phrases directly mentioned in the text.",
+  "template": "You are an expert in legal education. Your task is to create {n} multiple-choice questions with {options} options each, based *strictly* on the facts provided in the passages about *{leaf_label}*.\n\nGoal: Your questions should test the direct recall of key definitions, case names, statutory provisions, or specific legal tests mentioned in the text.\n\nInstructions:\n- Each question must be fully answerable without seeing the passages.\n- Do NOT use phrases like \"According to the passage\" \"Based on the excerpt\", \"As stated above\", etc\".\n- If you mention a statute or case, include its essential meaning in the question itself. Clearly mention what the section/case/statute is along with necessary years.\n- Distractors should be closely related but factually incorrect details from the context or domain.\n- Add two standard options to every question: one for 'None of the above' and one for 'Question not clear'.\n\nPassages (context you MUST rely on, but MUST NOT reference explicitly):\n---------\n{context}\n---------\n\nSTRICT OUTPUT FORMAT:\nQ1. <question text>\n(1) option A\n(2) option B\n...\n({options}-1) None of the above\n({options}) Question not clear\nAnswer: X",
+  "parser_regex": "Q\\d+\\..+?Answer:\\s*[1-12]",
+  "version": 1.0
+}

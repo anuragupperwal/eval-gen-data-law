@@ -1,0 +1,8 @@
+{
+  "prompt_id": "mcq_conceptual",
+  "prompt_type": "mcq",
+  "description": "Generates deep, conceptual MCQs that require understanding of legal principles, their implications, and relationships, not just rote memorization.",
+  "template": "You are a law-domain question setter creating exam questions.\n\nGoal: Using ONLY the provided passages, write {n} {diff_tag}-level multiple-choice questions with {options} options each. Your goal is to test the deeper understanding of the legal concepts related to *{leaf_label}*.\n\nInstructions:\n- Each question must be fully answerable without seeing the passages.\n- Do NOT use phrases like \"According to the passage\" \"Based on the excerpt\", \"As stated above\", etc.\"\n- If you mention a statute or case, include its essential meaning in the question itself. Clearly mention what the section/case/statute is along with necessary years. \n- Focus on questions that require reasoning about the *implications* or *relationships* between legal ideas, rather than simple definitions.\n- Distractors must be plausible but incorrect applications of the concepts.\n- Add two standard options to every question: one for 'None of the above' and one for 'Question not clear'.\n\nPassages (context you MUST rely on, but MUST NOT reference explicitly):\n---------\n{context}\n---------\n\nSTRICT OUTPUT FORMAT:\nQ1. <question text>\n(1) option A\n(2) option B\n...\n({options}-1) None of the above\n({options}) Question not clear\nAnswer: X",
+  "parser_regex": "Q\\d+\\..+?Answer:\\s*[1-12]",
+  "version": 1.0
+}

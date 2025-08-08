@@ -1,0 +1,21 @@
+domain: Law
+categories:
+  Constitutional Law:
+    - topic: Fundamental Rights – Article 19
+      difficulty: H
+    - topic: Judicial Review – Basic-Structure doctrine
+      difficulty: H
+    - topic: Emergency provisions – Art 352-359
+      difficulty: H
+
+  Criminal Law:
+    - topic: IPC §§ 299-304 – Culpable Homicide vs Murder
+      difficulty: H
+    - topic: Right of Private Defence – IPC §§ 96-106
+      difficulty: H
+    - topic: Criminal Conspiracy – IPC § 120B
+      difficulty: H
+    - topic: Defamation – IPC §§ 499-500
+      difficulty: H
+    - topic: Anticipatory Bail – CrPC § 438
+      difficulty: H
