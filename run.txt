@@ -28,8 +28,7 @@ python -m eval_data_gen.core.knowledge.index_builder
 eval-data-gen build-bundles \
     --taxonomy-path sample_data/taxonomy_law.yaml \
     --out-dir tmp/bundles_en \
-    --k 20 \
-    --window 0
+    --k 20 
 
 # Produce MCQs with Gemini-Flash
 eval-data-gen generate-questions \

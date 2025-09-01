@@ -227,7 +227,7 @@ async def main() -> None:
                 try:
                     model_out = results[i]
                     pred_idx = None # Reset for each model
-                    corr = False    # Reset for each model
+                    # corr = False    # Reset for each model
                     model_stats[model_name]["total"] += 1
                     if isinstance(model_out, Exception) or (isinstance(model_out, str) and model_out.startswith("Error:")):
                         model_stats[model_name]["unanswered"] += 1
